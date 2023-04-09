@@ -1,0 +1,25 @@
+#ifndef NODE_H
+#define NODE_H
+
+/////////////////////////////
+//
+//		TYPEDEFS
+//
+/////////////////////////////
+
+typedef struct node_t node_t;
+
+/////////////////////////////
+//
+//		STRUCTS
+//
+/////////////////////////////
+
+struct node_t
+{
+	void	*content;
+	node_t	*next;
+	node_t	*prev;
+};
+
+#endif
