@@ -35,12 +35,37 @@ TEST	node_free_test1(void)
 	node_t	*ptr[0x10];
 	size_t	i = 0;
 
-	for (i = 0; i < sizeof(ptr)/sizeof(node_t*); i++)
+	for (i = 0; i < sizeof(ptr)/sizeof(node_t*); i++) {
 		ptr[i] = node_new_empty();
+		ASSERT_NEQ(ptr[i], NULL);
+	}
+
 	for (i = 0; i < sizeof(ptr)/sizeof(node_t*); i++) {
 		node_free(&ptr[i]);
 		ASSERT_EQ(ptr[i], NULL);
 	}
+
+	PASS();
+}
+
+TEST	node_test_push(void)
+{
+	node_t	*ptr[0x5];
+	node_t	*lst = NULL;
+	size_t	i = 0;
+
+	for (i = 0; i < sizeof(ptr)/sizeof(node_t*); i++) {
+		ptr[i] = node_new((int *)i);
+		ASSERT_NEQ(ptr[i], NULL);
+		ASSERT_EQ(ptr[i]->content, (int *)i);
+	}
+
+	for (i = 0; i < sizeof(ptr)/sizeof(node_t*); i++) {
+		node_push(&lst, ptr[i]);
+		ASSERT_EQ(lst, ptr[i]);
+		ASSERT_EQ(lst->content, (int *)i);
+	}
+
 	PASS();
 }
 

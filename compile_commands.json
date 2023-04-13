@@ -32,5 +32,107 @@
    "obj/node/free.o"
   ],
   "file": "src/node/free.c"
+ },
+ {
+  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/pop.c",
+   "-o",
+   "obj/node/pop.o"
+  ],
+  "file": "src/node/pop.c"
+ },
+ {
+  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/size.c",
+   "-o",
+   "obj/node/size.o"
+  ],
+  "file": "src/node/size.c"
+ },
+ {
+  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/insert.c",
+   "-o",
+   "obj/node/insert.o"
+  ],
+  "file": "src/node/insert.c"
+ },
+ {
+  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/last.c",
+   "-o",
+   "obj/node/last.o"
+  ],
+  "file": "src/node/last.c"
+ },
+ {
+  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/push.c",
+   "-o",
+   "obj/node/push.o"
+  ],
+  "file": "src/node/push.c"
+ },
+ {
+  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/get.c",
+   "-o",
+   "obj/node/get.o"
+  ],
+  "file": "src/node/get.c"
  }
 ]

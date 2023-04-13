@@ -78,11 +78,19 @@ node_t	*node_get_last(node_t *n);
 * @brief    Insert a new node in list
 * @param    node_t**	: reference to head of the list
 * @param	node_t*		: pointer node that will be inserted
+* @param	index_t		: index where the node that will be inserted
 * @return	bool_t		: true if node has been inserted otherwise false
 * 					if it has not been
 * 					inserted
 *********************************************************************/
-bool_t	node_insert(node_t **n, node_t *new);
+bool_t	node_insert(node_t **n, node_t *new, index_t index);
+
+/*********************************************************************
+* @brief    Check if list is empty
+* @param    node_t*		: head of the list
+* @return	bool_t		: true/false if list is empty or not
+*********************************************************************/
+inline bool_t	node_is_empty(node_t *n) { return (!n); }
 
 /*********************************************************************
 * @brief    Free node from heap
@@ -121,5 +129,23 @@ void	node_pop_back(node_t **n);
 * @param    node_t**: reference of head list
 *********************************************************************/
 void	node_free_all(node_t **n);
+
+/*********************************************************************
+* @brief    Show a node
+* @param    node_t*: pointer on node
+*********************************************************************/
+void	node_show(node_t *n);
+
+/*********************************************************************
+* @brief    Show all nodes
+* @param    node_t*: head of the list
+*********************************************************************/
+void	node_show_all(node_t *n);
+
+/*********************************************************************
+* @brief    Set node content
+* @param    node_t*: pointer on node_t
+*********************************************************************/
+inline void	node_set_content(node_t *n, void *content) { if (n) n->content = content; }
 
 #endif

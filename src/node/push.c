@@ -6,7 +6,8 @@ void	node_push(node_t **n, node_t *new)
 
 	new->prev = NULL;
 	new->next = *n;
-	(*n)->prev = new;
+
+	if (*n) (*n)->prev = new;
 	*n = new;
 }
 
