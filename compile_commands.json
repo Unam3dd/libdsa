@@ -1,6 +1,6 @@
 [
  {
-  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "directory": "/nfs/homes/stales/Documents/libdsa",
   "arguments": [
    "gcc",
    "-Wall",
@@ -8,11 +8,29 @@
    "-Werror",
    "-Iinc",
    "-I.",
+   "-fPIC",
    "-c",
    "src/node/new.c",
    "-o",
-   "obj/./node/new.o"
+   "obj/node/new.o"
   ],
   "file": "src/node/new.c"
+ },
+ {
+  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/free.c",
+   "-o",
+   "obj/node/free.o"
+  ],
+  "file": "src/node/free.c"
  }
 ]

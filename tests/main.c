@@ -4,6 +4,8 @@
 SUITE(node_tests)
 {
 	RUN_TEST(node_new_test);
+	RUN_TEST(node_new_void);
+	RUN_TEST(node_free_test1);
 }
 
 int main(int argc, char **argv)

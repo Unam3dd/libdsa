@@ -8,6 +8,7 @@ node_t	*node_new(void *content)
 	ptr->content = content;
 	ptr->next = NULL;
 	ptr->prev = NULL;
+
 	return (ptr);
 }
 
@@ -19,5 +20,6 @@ node_t	*node_new_empty(void)
 	ptr->content = NULL;
 	ptr->next = NULL;
 	ptr->prev = NULL;
+
 	return (ptr);
 }
