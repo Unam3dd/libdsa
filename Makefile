@@ -6,7 +6,6 @@
 
 AUTHOR = sam0verfl0w
 
-
 ###################################
 #
 #			Project
@@ -26,7 +25,7 @@ LIBDSA_VERSION = 0.0.1
 ###################################
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinc
+CFLAGS = -Wall -Wextra -Werror -Iinc -I. -fPIC
 TEST_CFLAGS = -I. -Iinc
 VERSION = $(shell $(CC) --version | head -n1)
 
@@ -98,16 +97,20 @@ vpath %.h inc
 #
 ###################################
 
-SRCS = $(shell find . -iname "*.c" -print | sed 's/src\///g')
+SRCS = $(shell find src -iname "*.c" -print | sed 's/src\///g')
 OBJS = $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
-
+TEST_NAME = tester
 TEST_SRCS = $(shell find tests -iname "*.c" -print)
 TEST_OBJS = $(addprefix $(OBJDIR)/, $(TEST_SRCS:.c=.o))
 TEST_DSA_OBJS = $(filter-out obj/main.o, $(OBJS))
+INC_GTEST = inc/greatest
+CONTRIB_DIR = contrib
+TEST_DIR = tests
 
 ifdef DEBUG
 	CFLAGS += -g -DDEBUG=1
+	DIR_DIST = $(DIR_DBG)
 endif
 
 ifdef FAST
@@ -184,7 +187,7 @@ $(OBJDIR)/%.o: %.c
 	@$(eval cnt=$(shell echo $$(($(cnt)+1))))
 
 .ONESHELL:
-$(DIST)/$(NAME): $(OBJDIR) $(OBJS)
+$(DIR_DIST)/$(NAME): $(OBJDIR) $(OBJS)
 	@printf "\n[\033[0;32m\xE2\x9C\x94\033[0m] $(NAME) Created at \033[32m$(shell date)\033[00m"
 	@printf "\n[\033[0;32m\xE2\x9C\x94\033[0m] Version Build	: \033[32m$(DIR_DIST)\033[00m"
 	@printf "\n[\033[0;32m\xE2\x9C\x94\033[0m] Version $(NAME)	: \033[32m$(LIBDSA_VERSION)\033[00m"
@@ -211,7 +214,7 @@ fclean: clean
 	@rm -rf $(DIR_DIST)/$(NAME)
 	@rm -rf $(DIR_DIST)/$(NAME_SHARED)
 	@rm -rf $(DIR_DIST)/$(TEST_NAME)
-	@rm -rf bin dbg
+	@rm -rf $(DIR_DIST) $(DIR_DBG)
 
 re: fclean all
 
@@ -235,9 +238,9 @@ obj/tests/%.o: tests/%.c
 $(TEST_DIR): $(OBJDIR)
 	@mkdir -p $(OBJDIR)/$(TEST_DIR)
 
-$(TEST_NAME): $(INC_GTEST) $(CONTRIB_DIR) BANNER $(DIST)/$(NAME) $(OBJS) $(TEST_DIR) $(TEST_OBJS)
+$(TEST_NAME): $(INC_GTEST) $(CONTRIB_DIR) BANNER $(DIR_DIST)/$(NAME) $(OBJS) $(TEST_DIR) $(TEST_OBJS)
 	@mkdir -p $(DIR_DIST)
-	@$(CC) $(TESTFLAGS) -Itests $(TEST_DSA_OBJS) $(TEST_OBJS) -o $(DIR_DIST)/$(TEST_NAME)
+	@$(CC) $(TESTFLAGS) -Itests $(TEST_DSA_OBJS) -o $(DIR_DIST)/$(TEST_NAME)
 	@printf "\n[\033[0;32m\xE2\x9C\x94\033[0m] Tester Created at \033[32m$(shell date)\033[00m"
 	@printf "\n[\033[0;32m\xE2\x9C\x94\033[0m] Stored at \033[32m$(DIR_DIST)/$(TEST_NAME)\033[00m"
 

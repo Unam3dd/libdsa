@@ -1,0 +1,18 @@
+[
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-c",
+   "src/node/new.c",
+   "-o",
+   "obj/./node/new.o"
+  ],
+  "file": "src/node/new.c"
+ }
+]
