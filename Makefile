@@ -233,14 +233,14 @@ $(INC_GTEST) $(CONTRIB_DIR):
 	@rm -rf greatest
 
 obj/tests/%.o: tests/%.c
-	@$(CC) $(TESTFLAGS) -Itests -c $< -o $@
+	@$(CC) $(TEST_CFLAGS) -Itests -c $< -o $@
 
 $(TEST_DIR): $(OBJDIR)
 	@mkdir -p $(OBJDIR)/$(TEST_DIR)
 
 $(TEST_NAME): $(INC_GTEST) $(CONTRIB_DIR) BANNER $(DIR_DIST)/$(NAME) $(OBJS) $(TEST_DIR) $(TEST_OBJS)
 	@mkdir -p $(DIR_DIST)
-	@$(CC) $(TESTFLAGS) -Itests $(TEST_DSA_OBJS) -o $(DIR_DIST)/$(TEST_NAME)
+	@$(CC) $(TEST_CFLAGS) -Itests $(TEST_DSA_OBJS) $(TEST_OBJS) -o $(DIR_DIST)/$(TEST_NAME)
 	@printf "\n[\033[0;32m\xE2\x9C\x94\033[0m] Tester Created at \033[32m$(shell date)\033[00m"
 	@printf "\n[\033[0;32m\xE2\x9C\x94\033[0m] Stored at \033[32m$(DIR_DIST)/$(TEST_NAME)\033[00m"
 
