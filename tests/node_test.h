@@ -66,6 +66,8 @@ TEST	node_test_push(void)
 		ASSERT_EQ(lst->content, (int *)i);
 	}
 
+	node_free_all(&lst);
+
 	PASS();
 }
 

@@ -4,7 +4,7 @@
 void	node_show(node_t *n)
 {
 	if (!n) {
-		fprintf(stderr, "[!] No Node to show !\n");
+		dprintf(2, "[!] No Node to show !\n");
 		return ;
 	}
 
@@ -15,7 +15,7 @@ void	node_show(node_t *n)
 void	node_show_all(node_t *n)
 {
 	if (!n) {
-		fprintf(stderr, "[!] No Nodes to show !\n");
+		dprintf(2, "[!] No Nodes to show !\n");
 		return ;
 	}
 	

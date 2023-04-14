@@ -13,7 +13,7 @@ void	node_free_all(node_t **n)
 
 	node_t	*next = NULL;
 
-	while (n) {
+	while (*n) {
 		next = (*n)->next;
 		free(*n);
 		*n = next;

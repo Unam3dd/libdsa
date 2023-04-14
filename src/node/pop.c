@@ -18,6 +18,11 @@ void	node_pop_back(node_t **n)
 
 	if (!last) return ;
 
+	if (!last->prev) {
+		free(last);
+		*n = NULL;
+	}
+
 	if (last->prev) last->prev->next = NULL;
 	free(last);
 }
