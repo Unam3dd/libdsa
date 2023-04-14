@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include "bool.h"
 
+#define NODE_DELTA(a, b) ((long)((unsigned long)a - (unsigned long)b))
+
 /**
  * @typedef struct node_t
  */

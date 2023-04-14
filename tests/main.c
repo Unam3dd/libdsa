@@ -17,6 +17,9 @@ SUITE(node_tests)
 	RUN_TEST(node_test_remove);
 	RUN_TEST(node_test_remove2);
 	RUN_TEST(node_test_remove3);
+	RUN_TEST(node_test_insert);
+	RUN_TEST(node_test_insert2);
+	RUN_TEST(node_test_insert3);
 }
 
 int main(int argc, char **argv)

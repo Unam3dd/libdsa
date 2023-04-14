@@ -151,5 +151,22 @@
    "obj/node/get.o"
   ],
   "file": "src/node/get.c"
+ },
+ {
+  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/remove.c",
+   "-o",
+   "obj/node/remove.o"
+  ],
+  "file": "src/node/remove.c"
  }
 ]

@@ -363,4 +363,54 @@ TEST	node_test_remove3(void)
 	PASS();
 }
 
+TEST	node_test_insert(void)
+{
+	node_t	*first = NULL, *second = NULL, *third = NULL;
+	node_t	*four = NULL;
+
+	first = node_new("hello");
+	second = node_new("world");
+	third = node_new("toto");
+	four = node_new("tata");
+
+	ASSERT_NEQ(first, NULL);
+	ASSERT_NEQ(second, NULL);
+	ASSERT_NEQ(third, NULL);
+	ASSERT_NEQ(four, NULL);
+
+	node_push_back(&first, second);
+	node_push_back(&first, third);
+	node_insert(&first, four, 1);
+	ASSERT_EQ(first->next, four);
+	node_free_all(&first);
+	PASS();
+}
+
+TEST	node_test_insert2(void)
+{
+	node_t	*first = NULL;
+	node_t	*lst = NULL;
+
+	first = node_new("hello world");
+	ASSERT_NEQ(first, NULL);
+
+	node_insert(&lst, first, 0);
+	ASSERT_EQ(lst, first);
+	node_free_all(&lst);
+	PASS();
+}
+
+TEST	node_test_insert3(void)
+{
+	node_t	*first = NULL;
+	node_t	*lst = NULL;
+
+	first = node_new("mdr");
+	ASSERT_NEQ(first, NULL);
+	node_insert(&lst, first, 234);
+	ASSERT_EQ(lst, first);
+	node_free_all(&lst);
+	PASS();
+}
+
 #endif
