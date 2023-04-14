@@ -10,6 +10,13 @@ SUITE(node_tests)
 	RUN_TEST(node_test_push_back);
 	RUN_TEST(node_test_push_back2);
 	RUN_TEST(node_test_push2);
+	RUN_TEST(node_test_pop);
+	RUN_TEST(node_test_pop2);
+	RUN_TEST(node_test_free_all);
+	RUN_TEST(node_test_get);
+	RUN_TEST(node_test_remove);
+	RUN_TEST(node_test_remove2);
+	RUN_TEST(node_test_remove3);
 }
 
 int main(int argc, char **argv)

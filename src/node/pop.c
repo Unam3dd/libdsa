@@ -21,6 +21,7 @@ void	node_pop_back(node_t **n)
 	if (!last->prev) {
 		free(last);
 		*n = NULL;
+		return ;
 	}
 
 	if (last->prev) last->prev->next = NULL;

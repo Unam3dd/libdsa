@@ -124,9 +124,9 @@ TEST	node_test_push_back2(void)
 
 	tmp = node_get_last(lst);
 	size = node_get_size(lst);
-	idx = i - 1; 
+	idx = size - 1; 
 
-	while (idx >= 0 && idx <= size) {
+	while (idx >= 0 && idx < size) {
 		ASSERT_EQ(tmp, ptr[idx]);
 		ASSERT_EQ(tmp->content, ptr[idx]->content);
 		ASSERT_EQ(tmp->prev, ptr[idx]->prev);
@@ -158,13 +158,13 @@ TEST	node_test_push2(void)
 		node_push(&lst, ptr[i]);
 		ASSERT_EQ(lst, ptr[i]);
 		ASSERT_EQ(lst->content, ptr[i]->content);
-		ASSERT_EQ(lst->next, ptr[i]->next);
 		ASSERT_EQ(lst->prev, ptr[i]->prev);
+		ASSERT_EQ(lst->next, ptr[i]->next);
 	}
 
-	tmp = node_get_last(lst);
+	tmp = lst;
 	size = node_get_size(lst);
-	idx = i - 1; 
+	idx = size - 1; 
 
 	while (idx >= 0 && idx <= size) {
 		ASSERT_EQ(tmp, ptr[idx]);
@@ -178,4 +178,189 @@ TEST	node_test_push2(void)
 	node_free_all(&lst);
 	PASS();
 }
+
+TEST	node_test_pop(void)
+{
+	node_t	*ptr[0x10];
+	node_t	*lst = NULL, *last = NULL, *next = NULL;
+	size_t	i = 0;
+
+	for (i = 0; i < sizeof(ptr)/sizeof(node_t*); i++) {
+		ptr[i] = node_new((int *)i);
+		ASSERT_NEQ(ptr[i], NULL);
+		ASSERT_EQ(ptr[i]->content, (int *)i);
+	}
+
+	for (i = 0; i < sizeof(ptr)/sizeof(node_t*); i++) {
+		node_push_back(&lst, ptr[i]);
+		last = node_get_last(lst);
+		ASSERT_EQ(last, ptr[i]);
+		ASSERT_EQ(last->content, ptr[i]->content);
+	}
+
+	for (i = 0; i < sizeof(ptr)/sizeof(node_t*); i++) {
+		next = lst->next;
+		node_pop(&lst);
+		ASSERT_EQ(lst, next);
+		if (lst) ASSERT_EQ(lst->prev, NULL);
+	}
+
+	ASSERT_EQ(lst, NULL);
+
+	node_free_all(&lst);
+
+	PASS();
+}
+
+TEST	node_test_pop2(void)
+{
+	node_t	*ptr[0x10];
+	node_t	*lst = NULL, *last = NULL;
+	size_t	i = 0;
+
+	for (i = 0; i < sizeof(ptr)/sizeof(node_t*); i++) {
+		ptr[i] = node_new((int *)i);
+		ASSERT_NEQ(ptr[i], NULL);
+		ASSERT_EQ(ptr[i]->content, (int *)i);
+	}
+
+	for (i = 0; i < sizeof(ptr)/sizeof(node_t*); i++) {
+		node_push_back(&lst, ptr[i]);
+		last = node_get_last(lst);
+		ASSERT_EQ(last, ptr[i]);
+		ASSERT_EQ(last->content, ptr[i]->content);
+	}
+
+	for (i = 0; i < sizeof(ptr)/sizeof(node_t*); i++) {
+		last = node_get_last(lst);
+		if (last) {
+			node_pop_back(&lst);
+			ASSERT_NEQ(node_get_last(lst), last);
+		}
+	}
+
+	ASSERT_EQ(lst, NULL);
+
+	node_free_all(&lst);
+
+	PASS();
+}
+
+TEST	node_test_free_all(void)
+{
+	node_t	*tmp = NULL;
+	node_t	*lst = NULL;
+
+	for (int i = 0; i < 0x100; i++) {
+		tmp = node_new_empty();
+		node_push(&lst, tmp);
+	}
+
+	node_free_all(&lst);
+	ASSERT_EQ(lst, NULL);
+	PASS();
+}
+
+TEST	node_test_get(void)
+{
+	const char	*hellostr = "hello";
+	node_t	*lst = NULL;
+	node_t	*tmp = NULL, *toget = NULL;
+	size_t	i = 0;
+
+	for (i = 0; i < 0x100; i++) {
+		if (i == 55) {
+			tmp = node_new((char*)hellostr);
+			ASSERT_NEQ(tmp, NULL);
+			ASSERT_STR_EQ(hellostr, tmp->content);
+		} else {
+			tmp = node_new((int *)i);
+			ASSERT_NEQ(tmp, NULL);
+			ASSERT_EQ(tmp->content, (int *)i);
+		}
+		node_push_back(&lst, tmp);
+	}
+
+	toget = node_get(lst, 55);
+
+	ASSERT_NEQ(toget, NULL);
+	ASSERT_EQ(toget->content, hellostr);
+
+	node_free_all(&lst);
+	ASSERT_EQ(lst, NULL);
+
+	PASS();
+}
+
+TEST	node_test_remove(void)
+{
+	const char	*hellostr = "hello";
+	node_t	*lst = NULL;
+	node_t	*tmp = NULL, *toget = NULL, *save = NULL;
+	size_t	i = 0;
+
+	for (i = 0; i < 0x100; i++) {
+		if (i == 55) {
+			tmp = node_new((char*)hellostr);
+			ASSERT_NEQ(tmp, NULL);
+			ASSERT_STR_EQ(hellostr, tmp->content);
+		} else {
+			tmp = node_new((int *)i);
+			ASSERT_NEQ(tmp, NULL);
+			ASSERT_EQ(tmp->content, (int *)i);
+		}
+		node_push_back(&lst, tmp);
+	}
+	
+	save = node_get(lst, 55);
+
+	node_remove(&lst, 55);
+
+	toget = node_get(lst, 55);
+
+	ASSERT_NEQ(toget, save);
+
+	node_free_all(&lst);
+	ASSERT_EQ(lst, NULL);
+
+	PASS();
+}
+
+TEST	node_test_remove2(void)
+{
+	node_t	*first = NULL, *second = NULL, *third = NULL;
+
+	first = node_new("hello");
+	second = node_new("world");
+	third = node_new("ivoxygen");
+
+	ASSERT_NEQ(first, NULL);
+	ASSERT_NEQ(second, NULL);
+	ASSERT_NEQ(third, NULL);
+
+	node_push_back(&first, second);
+	node_push_back(&first, third);
+
+	node_remove(&first, 1);
+
+	ASSERT_EQ(first->next, third);
+	
+	node_free_all(&first);
+
+	PASS();
+}
+
+TEST	node_test_remove3(void)
+{
+	node_t	*first = NULL;
+
+	first = node_new("hello");
+
+	node_remove(&first, 0);
+
+	ASSERT_EQ(first, NULL);
+
+	PASS();
+}
+
 #endif

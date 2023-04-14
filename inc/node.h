@@ -86,6 +86,16 @@ node_t	*node_get_last(node_t *n);
 bool_t	node_insert(node_t **n, node_t *new, index_t index);
 
 /*********************************************************************
+* @brief    Remove a node in list
+* @param    node_t**	: reference to head of the list
+* @param	index_t		: index where the node that will be inserted
+* @return	bool_t		: true if node has been removed otherwise false
+* 					if it has not been
+* 					removed
+*********************************************************************/
+bool_t	node_remove(node_t **n, index_t index);
+
+/*********************************************************************
 * @brief    Check if list is empty
 * @param    node_t*		: head of the list
 * @return	bool_t		: true/false if list is empty or not

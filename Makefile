@@ -256,6 +256,6 @@ unit_fclean: unit_clean
 	@rm -rf contrib
 
 run_tests: $(TEST_NAME)
-	./$(DIR_DIST)/$(TEST_NAME) -v | ./contrib/greenest
+	@./$(DIR_DIST)/$(TEST_NAME) -v | ./contrib/greenest
 
 .PHONY: all clean fclean re unit unit_clean unit_fclean test
