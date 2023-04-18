@@ -413,4 +413,40 @@ TEST	node_test_insert3(void)
 	PASS();
 }
 
+int	test_cmp(void *s1, void *s2)
+{
+	return (strcmp((const char*)s1, (const char*)s2));
+}
+
+TEST	node_test_cmp(void)
+{
+	node_t	*first = NULL, *second = NULL, *third = NULL;
+	node_t	*lst = NULL;
+
+	first = node_new("hello");
+	second = node_new("world");
+	third = node_new("toto");
+
+	node_push_back(&lst, first);
+	node_push_back(&lst, second);
+	node_push_back(&lst, third);
+
+	node_get_by_content(lst, test_cmp, "world");
+	node_free_all(&lst);
+	PASS();
+}
+
+TEST	node_mega_test(void)
+{
+	node_t	*tmp = NULL;
+	node_t	*lst = NULL;
+
+	for (size_t i = 0; i < 0xFFFF; i++) {
+		tmp = node_new((int *)i);
+		node_push_back(&lst, tmp);
+	}
+	node_free_all(&lst);
+	PASS();
+}
+
 #endif

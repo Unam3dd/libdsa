@@ -2,7 +2,7 @@
 
 void	node_push(node_t **n, node_t *new)
 {
-	if (!n) return ;
+	if (!n || !new) return ;
 
 	new->prev = NULL;
 	new->next = *n;
@@ -13,7 +13,7 @@ void	node_push(node_t **n, node_t *new)
 
 void	node_push_back(node_t **n, node_t *new)
 {
-	if (!n) return ;
+	if (!n || !new) return ;
 
 	node_t	*tmp = node_get_last(*n);
 	

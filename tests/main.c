@@ -20,6 +20,8 @@ SUITE(node_tests)
 	RUN_TEST(node_test_insert);
 	RUN_TEST(node_test_insert2);
 	RUN_TEST(node_test_insert3);
+	RUN_TEST(node_test_cmp);
+	RUN_TEST(node_mega_test);
 }
 
 int main(int argc, char **argv)
