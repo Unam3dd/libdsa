@@ -9,7 +9,6 @@ lst_node_t	*lst_node_new(void *content)
 	if (!ptr) return (NULL);
 	
 	ptr->content = content;
-	ptr->index = 0;
 	ptr->next = NULL;
 	ptr->prev = NULL;
 

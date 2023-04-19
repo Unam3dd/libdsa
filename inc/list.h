@@ -4,23 +4,15 @@
 #include <stddef.h>
 #include "bool.h"
 
-typedef enum type_memory_t type_memory_t;
 typedef struct lst_node_t lst_node_t;
 typedef struct lst_t lst_t;
 typedef unsigned int node_index_t;
-
-enum type_memory_t
-{
-	STACK = 1 << 0,
-	HEAP = 1 << 1
-};
 
 struct lst_node_t
 {
 	lst_node_t		*next;
 	lst_node_t		*prev;
 	void			*content;
-	type_memory_t	type;
 };
 
 struct lst_t
@@ -30,9 +22,13 @@ struct lst_t
 	size_t		len;
 };
 
+#define LIST_CREATE(name) lst_t name = { NULL, NULL, 0};
+
+inline size_t	lst_length(lst_t *lst) { return (lst ? (lst->len) : 0); }
 lst_node_t	*lst_node_new(void *content);
 lst_node_t	*lst_get(lst_t *lst, node_index_t index);
 lst_node_t	*lst_get_last(lst_t *lst);
+size_t		lst_size(lst_t *lst);
 bool_t		lst_insert(lst_t *lst, lst_node_t *new, node_index_t index);
 void		lst_push(lst_t *lst, lst_node_t *new);
 void		lst_push_back(lst_t *lst, lst_node_t *new);

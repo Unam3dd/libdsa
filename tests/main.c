@@ -1,5 +1,6 @@
 #include "defs.h"
 #include "node_test.h"
+#include "list_test.h"
 
 SUITE(node_tests)
 {
@@ -24,10 +25,18 @@ SUITE(node_tests)
 	RUN_TEST(node_mega_test);
 }
 
+SUITE(list_tests)
+{
+	RUN_TEST(list_test_basic1);
+	RUN_TEST(list_test_basic2);
+	RUN_TEST(list_test_basic3);
+}
+
 int main(int argc, char **argv)
 {
 	GREATEST_MAIN_BEGIN();
 	RUN_SUITE(node_tests);
+	RUN_SUITE(list_tests);
 	GREATEST_MAIN_END();
 	return (0);
 }
