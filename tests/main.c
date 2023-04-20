@@ -30,6 +30,10 @@ SUITE(list_tests)
 	RUN_TEST(list_test_basic1);
 	RUN_TEST(list_test_basic2);
 	RUN_TEST(list_test_basic3);
+	RUN_TEST(list_test_basic4);
+	RUN_TEST(list_test_basic5);
+	RUN_TEST(list_test_basic6);
+	RUN_TEST(list_test_basic7);
 }
 
 int main(int argc, char **argv)
