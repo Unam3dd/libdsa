@@ -7,6 +7,7 @@
 typedef struct lst_node_t lst_node_t;
 typedef struct lst_t lst_t;
 typedef unsigned int node_index_t;
+typedef int	(*cb_t)(lst_node_t *lst, void *ptr);
 
 struct lst_node_t
 {
@@ -23,13 +24,15 @@ struct lst_t
 };
 
 #define LIST_CREATE(name) lst_t name = { NULL, NULL, 0};
+#define LIST_RESET(lst) lst.len = 0, lst.last = NULL, lst.lst = NULL;
 
-inline size_t	lst_length(lst_t *lst) { return (lst ? (lst->len) : 0); }
+static inline size_t		lst_length(lst_t *lst) { return (lst ? (lst->len) : 0); }
 lst_node_t	*lst_node_new(void *content);
 lst_node_t	*lst_get(lst_t *lst, node_index_t index);
 lst_node_t	*lst_get_last(lst_t *lst);
 size_t		lst_size(lst_t *lst);
 bool_t		lst_insert(lst_t *lst, lst_node_t *new, node_index_t index);
+int			lst_iter(lst_t *lst, cb_t func, void *ptr);
 void		lst_push(lst_t *lst, lst_node_t *new);
 void		lst_push_back(lst_t *lst, lst_node_t *new);
 void		lst_pop(lst_t *lst);

@@ -173,13 +173,51 @@ TEST	list_test_basic8(void)
 		lst_push(&lst, ptr);
 		ASSERT_EQ(lst.lst->content, ptr->content);
 	}
-
+	ASSERT_EQ(lst_length(&lst), 0x100);
 	insert = lst_node_new((size_t*)0x666);
 	ASSERT_NEQ(insert, NULL);
 	lst_insert(&lst, insert, 3);
 	get = lst_get(&lst, 3);
 	ASSERT_NEQ(get, NULL);
 	ASSERT_EQ(get->content, insert->content);
+	ASSERT_EQ(lst_length(&lst), 0x101);
+	lst_free(&lst);
+	ASSERT_EQ(lst.lst, NULL);
+	PASS();
+}
+
+TEST	list_test_basic9(void)
+{
+	LIST_CREATE(lst);
+	lst_node_t	*ptr = NULL;
+
+	ptr = lst_get(&lst, -12);
+	ASSERT_EQ(ptr, NULL);
+	PASS();
+}
+
+int	callback_test(lst_node_t *node, void *ptr)
+{
+	(void)ptr;
+	printf("%p: %s\n", node, (char *)node->content);
+	return (0);
+}
+
+TEST	list_test_basic10(void)
+{
+	const char	*strs[0x3] = {
+		"hello",
+		"world",
+		"toto"
+	};
+
+	LIST_CREATE(lst);
+	lst_node_t	*ptr = NULL;
+	for (size_t i = 0; i < 0x100; i++) {
+		ptr = lst_node_new((void *)strs[i % 3]);
+		lst_push_back(&lst, ptr);
+	}
+	lst_iter(&lst, callback_test, NULL);
 	lst_free(&lst);
 	ASSERT_EQ(lst.lst, NULL);
 	PASS();
