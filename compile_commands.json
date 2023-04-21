@@ -1,210 +1,6 @@
 [
  {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/node/pop.c",
-   "-o",
-   "obj/node/pop.o"
-  ],
-  "file": "src/node/pop.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/node/size.c",
-   "-o",
-   "obj/node/size.o"
-  ],
-  "file": "src/node/size.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/node/remove.c",
-   "-o",
-   "obj/node/remove.o"
-  ],
-  "file": "src/node/remove.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/node/insert.c",
-   "-o",
-   "obj/node/insert.o"
-  ],
-  "file": "src/node/insert.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/node/last.c",
-   "-o",
-   "obj/node/last.o"
-  ],
-  "file": "src/node/last.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/node/new.c",
-   "-o",
-   "obj/node/new.o"
-  ],
-  "file": "src/node/new.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/node/show.c",
-   "-o",
-   "obj/node/show.o"
-  ],
-  "file": "src/node/show.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/node/push.c",
-   "-o",
-   "obj/node/push.o"
-  ],
-  "file": "src/node/push.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/node/free.c",
-   "-o",
-   "obj/node/free.o"
-  ],
-  "file": "src/node/free.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/node/get.c",
-   "-o",
-   "obj/node/get.o"
-  ],
-  "file": "src/node/get.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/list/lst_get.c",
-   "-o",
-   "obj/list/lst_get.o"
-  ],
-  "file": "src/list/lst_get.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/list/lst_push.c",
-   "-o",
-   "obj/list/lst_push.o"
-  ],
-  "file": "src/list/lst_push.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
   "arguments": [
    "gcc",
    "-Wall",
@@ -221,7 +17,7 @@
   "file": "src/list/lst_insert.c"
  },
  {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
   "arguments": [
    "gcc",
    "-Wall",
@@ -238,24 +34,7 @@
   "file": "src/list/lst_size.c"
  },
  {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
-  "arguments": [
-   "gcc",
-   "-Wall",
-   "-Wextra",
-   "-Werror",
-   "-Iinc",
-   "-I.",
-   "-fPIC",
-   "-c",
-   "src/list/lst_last.c",
-   "-o",
-   "obj/list/lst_last.o"
-  ],
-  "file": "src/list/lst_last.c"
- },
- {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
   "arguments": [
    "gcc",
    "-Wall",
@@ -272,7 +51,7 @@
   "file": "src/list/lst_free.c"
  },
  {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
   "arguments": [
    "gcc",
    "-Wall",
@@ -289,7 +68,41 @@
   "file": "src/list/lst_node_new.c"
  },
  {
-  "directory": "/nfs/homes/stales/Documents/libdsa",
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/list/lst_get.c",
+   "-o",
+   "obj/list/lst_get.o"
+  ],
+  "file": "src/list/lst_get.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/list/lst_iter.c",
+   "-o",
+   "obj/list/lst_iter.o"
+  ],
+  "file": "src/list/lst_iter.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
   "arguments": [
    "gcc",
    "-Wall",
@@ -304,5 +117,209 @@
    "obj/list/lst_pop.o"
   ],
   "file": "src/list/lst_pop.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/list/lst_push.c",
+   "-o",
+   "obj/list/lst_push.o"
+  ],
+  "file": "src/list/lst_push.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/list/lst_last.c",
+   "-o",
+   "obj/list/lst_last.o"
+  ],
+  "file": "src/list/lst_last.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/insert.c",
+   "-o",
+   "obj/node/insert.o"
+  ],
+  "file": "src/node/insert.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/free.c",
+   "-o",
+   "obj/node/free.o"
+  ],
+  "file": "src/node/free.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/last.c",
+   "-o",
+   "obj/node/last.o"
+  ],
+  "file": "src/node/last.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/show.c",
+   "-o",
+   "obj/node/show.o"
+  ],
+  "file": "src/node/show.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/push.c",
+   "-o",
+   "obj/node/push.o"
+  ],
+  "file": "src/node/push.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/get.c",
+   "-o",
+   "obj/node/get.o"
+  ],
+  "file": "src/node/get.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/pop.c",
+   "-o",
+   "obj/node/pop.o"
+  ],
+  "file": "src/node/pop.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/remove.c",
+   "-o",
+   "obj/node/remove.o"
+  ],
+  "file": "src/node/remove.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/new.c",
+   "-o",
+   "obj/node/new.o"
+  ],
+  "file": "src/node/new.c"
+ },
+ {
+  "directory": "/home/sam0verfl0w/Documents/libdsa",
+  "arguments": [
+   "gcc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-Iinc",
+   "-I.",
+   "-fPIC",
+   "-c",
+   "src/node/size.c",
+   "-o",
+   "obj/node/size.o"
+  ],
+  "file": "src/node/size.c"
  }
 ]

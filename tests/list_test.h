@@ -223,4 +223,138 @@ TEST	list_test_basic10(void)
 	PASS();
 }
 
+TEST	list_test_basic11(void)
+{
+	lst_node_t	*a = NULL, *b = NULL;
+
+	a = lst_node_new((unsigned long*)0x1337);
+	ASSERT_NEQ(a, NULL);
+	b = lst_node_new((unsigned long*)0x666);
+	ASSERT_NEQ(b, NULL);
+
+	ASSERT_EQ(a->content, (unsigned long*)0x1337);
+	ASSERT_EQ(b->content, (unsigned long*)0x666);
+
+	lst_swap(a, b);
+	ASSERT_EQ(a->content, (unsigned long*)0x666);
+	ASSERT_EQ(b->content, (unsigned long*)0x1337);
+
+	lst_free_node(&a);
+	lst_free_node(&b);
+
+	PASS();
+}
+
+TEST	list_test_basic12(void)
+{
+	LIST_CREATE(lst1);
+	LIST_CREATE(lst2);
+	LIST_CREATE(lst3);
+
+	lst_node_t	*t1 = NULL, *t2 = NULL;
+	size_t		i = 0;
+
+	for (i = 0; i < 5; i++) {
+		t1 = lst_node_new((unsigned long *)i);
+		ASSERT_NEQ(t1, NULL);
+		lst_push_back(&lst1, t1);
+		ASSERT_EQ(lst1.last, t1);
+	}
+
+	ASSERT_EQ(lst1.len, 5);
+
+	for (i = 0; i < 3; i++) {
+		t1 = lst_node_new((unsigned long*)(i + 0x1337));
+		ASSERT_NEQ(t1, NULL);
+		lst_push_back(&lst2, t1);
+		ASSERT_EQ(lst2.last, t1);
+	}
+
+	lst_copy(&lst2, &lst1);
+	ASSERT_EQ(lst2.len, lst1.len);
+
+	t1 = lst1.lst; t2 = lst2.lst;
+
+	for (i = 0; i < 5; i++) {
+		ASSERT_EQ(t1->content, t2->content);
+		t1 = t1->next;
+		t2 = t2->next;
+	}
+
+	lst_copy(&lst3, &lst1);
+	ASSERT_EQ(lst3.len, lst1.len);
+
+	t1 = lst3.lst; t2 = lst1.lst;
+
+	for (i = 0; i < 5; i++) {
+		ASSERT_EQ(t1->content, t2->content);
+		t1 = t1->next;
+		t2 = t2->next;
+	}
+
+	lst_free(&lst1);
+	lst_free(&lst2);
+	lst_free(&lst3);
+	ASSERT_EQ(lst1.lst, NULL);
+	ASSERT_EQ(lst2.lst, NULL);
+	ASSERT_EQ(lst3.lst, NULL);
+
+	PASS();
+}
+
+TEST	list_test_basic13(void)
+{
+	LIST_CREATE(lst);
+	lst_node_t	*ptr = NULL;
+	lst_node_t	*begin = NULL;
+	lst_node_t	*end = NULL;
+
+	for (size_t i = 0; i < 5; i++) {
+		ptr = lst_node_new((unsigned long*)i);
+		ASSERT_NEQ(ptr, NULL);
+		lst_push_back(&lst, ptr);
+		ASSERT_EQ(lst.last, ptr);
+	}
+
+	begin = lst_begin(&lst);
+	end = lst_end(&lst);
+
+	ASSERT_EQ(lst.lst, begin);
+	ASSERT_EQ(lst.last, end);
+
+	lst_free(&lst);
+
+	PASS();
+}
+
+TEST	list_test_basic14(void)
+{
+	LIST_CREATE(lst);
+	lst_t		*na = NULL;
+	lst_node_t	*ptr = NULL, *tmp = NULL;
+	size_t		i = 0;
+
+	for (i = 0; i < 10; i++) {
+		ptr = lst_node_new((size_t*)i);
+		lst_push_back(&lst, ptr);
+	}
+
+	na = lst_dup(&lst);
+	tmp = na->lst;
+	ptr = lst.lst;
+	ASSERT_NEQ(na, NULL);
+	ASSERT_EQ(na->len, lst.len);
+
+	for (i = 0; i < 10; i++) {
+		ASSERT_EQ(ptr->content, tmp->content);
+		ptr = ptr->next;
+		tmp = tmp->next;
+	}
+
+	lst_free(&lst);
+	lst_free(na);
+	free(na);
+	PASS();
+}
+
 #endif
