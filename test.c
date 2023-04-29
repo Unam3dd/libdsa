@@ -1,9 +1,12 @@
-#include <stdio.h>
 #include "tlist.h"
-
-TLIST_TYPE(int, i);
+#include <stdio.h>
 
 int main(void)
 {
+	TLIST(int, mytest);
+	TLIST_PTR(mytest, toto, NULL);
+
+	TLIST_NEW(mytest, mdr);
+
 	return (0);
 }
