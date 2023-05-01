@@ -2,6 +2,7 @@
 #define TLIST_H
 
 #include <stddef.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #define TLIST(T,L)										\
@@ -42,6 +43,21 @@
 	PTR->_prev = NULL;\
 	PTR->_data = 0;
 
+#define TLIST_PUSH(LST, NEW)\
+	NEW->_prev = NULL;\
+	NEW->_next = *LST;\
+	if (*LST) (*LST)->_prev = NEW;\
+	*LST = NEW;
+
+#define TLIST_POP(LST)\
+	({\
+	 typeof(*LST)	*next = NULL;\
+	 next = (*LST)->_next;\
+	 if (next) next->_prev = NULL;\
+	 TLIST_FREE_BLOCK(*LST);\
+	 *LST = next;\
+	 \})
+
 #define TLIST_FREE(LST)\
 	({\
 	 	typeof(LST)	_next = NULL;\
@@ -66,5 +82,11 @@
 	 	}\
 		*LST = NULL;\
 	 })
+
+#define TLIST_FOREACH(LST)\
+		({\
+		 	typeof(LST)	tmp = LST;\
+			for (unsigned int i = 0; tmp; tmp = tmp->_next, i++) printf("[%d]:	%p\n", i, tmp);\
+		})
 
 #endif

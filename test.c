@@ -24,17 +24,11 @@ int main(void)
 	toto->_data = 1;
 	tata->_data = 2;
 
-	tata->_next = toto;
-	tata->_prev = NULL;
-	if (toto) toto->_prev = tata;
-	toto = tata;
+	TLIST_PUSH(&toto, tata);
+
+	TLIST_FOREACH(toto);
 
 	free_lst(&toto);
-
-	if (toto == NULL)
-		printf("Not leak are possible !\n");
-
-	TLIST_SET(tata, 5);
 
 	return (0);
 }
