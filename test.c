@@ -34,5 +34,7 @@ int main(void)
 	if (toto == NULL)
 		printf("Not leak are possible !\n");
 
+	TLIST_SET(tata, 5);
+
 	return (0);
 }

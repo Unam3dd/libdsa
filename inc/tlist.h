@@ -34,6 +34,9 @@
 
 #define TLIST_ALLOC(T) (struct _list##T *)malloc(sizeof(struct _list##T));
 
+#define TLIST_SET(ptr, data)\
+	ptr->_data = data;
+
 #define TLIST_ZERO(PTR)\
 	PTR->_next = NULL;\
 	PTR->_prev = NULL;\
