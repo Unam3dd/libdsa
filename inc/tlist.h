@@ -51,12 +51,12 @@
 
 #define TLIST_POP(LST)\
 	({\
-	 typeof(*LST)	*next = NULL;\
+	 typeof(*LST)	next = NULL;\
 	 next = (*LST)->_next;\
 	 if (next) next->_prev = NULL;\
-	 TLIST_FREE_BLOCK(*LST);\
+	 free(*LST);\
 	 *LST = next;\
-	 \})
+	 })
 
 #define TLIST_FREE(LST)\
 	({\
@@ -83,10 +83,32 @@
 		*LST = NULL;\
 	 })
 
+#define TLIST_PUSH_BACK(LST, NEW)\
+	({\
+	 typeof(*LST)	tmp = *LST;\
+	 while (tmp && tmp->_next) tmp = tmp->_next;\
+	 if (NEW){\
+	 	NEW->_next = NULL;\
+		NEW->_prev = tmp;}\
+	 if (tmp) tmp->_next = NEW;\
+	 })
+
+#define TLIST_POP_BACK(LST)\
+	({\
+	 typeof(*LST)	tmp = *LST;\
+	 typeof(*LST)	prev = NULL;\
+	 while (tmp && tmp->_next) tmp = tmp->_next;\
+	 if (tmp) prev = tmp->_prev;\
+	 if (prev) prev->_next = NULL;\
+	 if (!prev) *LST = NULL;\
+	 free(tmp);\
+	 })
+
 #define TLIST_FOREACH(LST)\
 		({\
 		 	typeof(LST)	tmp = LST;\
-			for (unsigned int i = 0; tmp; tmp = tmp->_next, i++) printf("[%d]:	%p\n", i, tmp);\
+			if (!tmp) printf("NULL\n");\
+			for (unsigned int i = 0; tmp; tmp = tmp->_next, i++) printf("[%d]:	%p | %p\n", i, tmp, tmp->_data);\
 		})
 
 #endif

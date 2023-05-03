@@ -25,7 +25,7 @@ LIBDSA_VERSION = 0.0.1
 ###################################
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinc -I. -fPIC
+CFLAGS = -Wall -Wextra -Werror -Iinc -I. -fPIC -pedantic
 TEST_CFLAGS = -I. -Iinc
 VERSION = $(shell $(CC) --version | head -n1)
 
