@@ -129,4 +129,23 @@
 		len;\
 	 })
 
+#define TLIST_INSERT(LST, NEW, index)\
+	({\
+	 typeof(*LST)	tmp = *LST;\
+	 typeof(*LST)	prev = NULL;\
+	 typeof(*LST)	next = NULL;\
+	 typeof(*LST)	get = NULL;\
+	 if (!tmp) TLIST_PUSH(LST, NEW);\
+	 if (index >= TLIST_LENGTH(tmp)) TLIST_PUSH_BACK(LST, NEW);\
+	 get = TLIST_GET(tmp, index);\
+	 if (get){\
+	 		next = get->_next;\
+	 		prev = get->_prev;\
+			if (NEW) NEW->_next = next;\
+			if (NEW) NEW->_prev = prev;\
+			if (next) next->_prev = NEW;\
+			if (prev) prev->_next = NEW;\
+	 	}\
+	 })
+
 #endif
