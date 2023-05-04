@@ -16,6 +16,8 @@ int main(void)
 	TLIST_PTR(mytest, toto, NULL);
 	TLIST_PTR(mytest, tata, NULL);
 	TLIST_PTR(mytest, titi, NULL);
+	TLIST_PTR(mytest, get, NULL);
+	size_t	len_lst = 0;
 
 	toto = TLIST_ALLOC(mytest);
 	tata = TLIST_ALLOC(mytest);
@@ -53,6 +55,14 @@ int main(void)
 	TLIST_POP(&toto);
 
 	TLIST_FOREACH(toto);
+
+	printf("\nGet Index 1\n");
+	get = TLIST_GET(toto, 1);
+	len_lst = TLIST_LENGTH(toto);
+
+	printf("Length of list : %ld\n", len_lst);
+
+	printf("Get : %p | %d\n", get, get->_data);
 
 	printf("\nPop Back\n");
 

@@ -111,4 +111,22 @@
 			for (unsigned int i = 0; tmp; tmp = tmp->_next, i++) printf("[%d]:	%p | %p\n", i, tmp, tmp->_data);\
 		})
 
+#define	TLIST_GET(LST, idx)\
+	({\
+	 typeof(LST)	tmp = LST;\
+	 for (size_t i = 0; i < idx && tmp; i++, tmp = tmp->_next);\
+	 tmp;\
+	 })
+
+#define TLIST_LENGTH(LST)\
+	({\
+	 	typeof(LST)	tmp = LST;\
+	 	size_t	len = 0;\
+		while (tmp){\
+			len++;\
+			tmp = tmp->_next;\
+		}\
+		len;\
+	 })
+
 #endif
