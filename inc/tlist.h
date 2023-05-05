@@ -108,7 +108,7 @@
 		({\
 		 	typeof(LST)	tmp = LST;\
 			if (!tmp) printf("NULL\n");\
-			for (unsigned int i = 0; tmp; tmp = tmp->_next, i++) printf("[%d]:	%p | %p\n", i, tmp, tmp->_data);\
+			for (unsigned int i = 0; tmp; tmp = tmp->_next, i++) printf("[%d]:	%p | %x\n", i, tmp, tmp->_data);\
 		})
 
 #define	TLIST_GET(LST, idx)\
@@ -127,25 +127,6 @@
 			tmp = tmp->_next;\
 		}\
 		len;\
-	 })
-
-#define TLIST_INSERT(LST, NEW, index)\
-	({\
-	 typeof(*LST)	tmp = *LST;\
-	 typeof(*LST)	prev = NULL;\
-	 typeof(*LST)	next = NULL;\
-	 typeof(*LST)	get = NULL;\
-	 if (!tmp) TLIST_PUSH(LST, NEW);\
-	 if (index >= TLIST_LENGTH(tmp)) TLIST_PUSH_BACK(LST, NEW);\
-	 get = TLIST_GET(tmp, index);\
-	 if (get){\
-	 		next = get->_next;\
-	 		prev = get->_prev;\
-			if (NEW) NEW->_next = next;\
-			if (NEW) NEW->_prev = prev;\
-			if (next) next->_prev = NEW;\
-			if (prev) prev->_next = NEW;\
-	 	}\
 	 })
 
 #endif

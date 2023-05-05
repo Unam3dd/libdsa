@@ -17,11 +17,13 @@ int main(void)
 	TLIST_PTR(mytest, tata, NULL);
 	TLIST_PTR(mytest, titi, NULL);
 	TLIST_PTR(mytest, get, NULL);
+	TLIST_PTR(mytest, insert, NULL);
 	size_t	len_lst = 0;
 
 	toto = TLIST_ALLOC(mytest);
 	tata = TLIST_ALLOC(mytest);
 	titi = TLIST_ALLOC(mytest);
+	insert = TLIST_ALLOC(mytest);
 
 	TLIST_NEW_STACK(persons, robert);
 
@@ -37,6 +39,7 @@ int main(void)
 	toto->_data = 1;
 	tata->_data = 2;
 	titi->_data = 3;
+	insert->_data = 4;
 
 	TLIST_PUSH(&toto, tata);
 
@@ -47,7 +50,7 @@ int main(void)
 	printf("\nPush titi in toto\n");
 
 	TLIST_PUSH_BACK(&toto, titi);
-	
+
 	TLIST_FOREACH(toto);
 
 	printf("\nPop Top of the list\n");
