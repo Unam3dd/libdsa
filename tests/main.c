@@ -1,6 +1,7 @@
 #include "defs.h"
 #include "node_test.h"
 #include "list_test.h"
+#include "tlist_test.h"
 
 SUITE(node_tests)
 {
@@ -43,11 +44,19 @@ SUITE(list_tests)
 	RUN_TEST(list_test_basic14);
 }
 
+SUITE(tlist_tests)
+{
+	RUN_TEST(tlist_basic_create);
+	RUN_TEST(tlist_basic_type);
+	RUN_TEST(tlist_basic_test1);
+}
+
 int main(int argc, char **argv)
 {
 	GREATEST_MAIN_BEGIN();
 	RUN_SUITE(node_tests);
 	RUN_SUITE(list_tests);
+	RUN_SUITE(tlist_tests);
 	GREATEST_MAIN_END();
 	return (0);
 }

@@ -4,13 +4,14 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define TLIST(T,L)										\
 	struct _list##L { 									\
 		struct _list##L	*_next;							\
 		struct _list##L	*_prev;							\
 		T				_data;							\
-	} L = { NULL, NULL, 0 };
+	} L = { NULL, NULL };
 
 #define TYPE_LIST(L) struct _list##L
 
@@ -22,13 +23,19 @@
 	} L;
 
 #define TLIST_T(T, L, D)\
-	struct _list##T	L = D;\
+	struct _list##T	L = { NULL, NULL, D};\
+
+#define TLIST_T_(T, L)\
+	struct _list##T L;
 
 #define TLIST_PTR(T, L, D)\
 	struct _list##T *L = D;
 
 #define TLIST_NEW_STACK(T, L)\
 	struct	_list##T L = { NULL, NULL, 0 };\
+
+#define TLIST_NEW_STACK_(T, L)\
+	struct _list##T	L;
 
 #define TLIST_NEW(T, L)\
 	 struct _list##T *L = (struct _list##T*) malloc(sizeof(struct _list##T));\
@@ -42,6 +49,8 @@
 	PTR->_next = NULL;\
 	PTR->_prev = NULL;\
 	PTR->_data = 0;
+
+#define TLIST_ZERO_S(PTR) (memset((void*)PTR, 0, sizeof(PTR)))
 
 #define TLIST_PUSH(LST, NEW)\
 	NEW->_prev = NULL;\
